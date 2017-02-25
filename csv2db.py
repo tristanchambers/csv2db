@@ -15,11 +15,19 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import os
 import csv
 import re
+import argparse
 
-csv_filename = "/home/tristan/dump2db/paper signatures - Sheet1.csv"
-table_name = 'paper'
+# Command line arguments
+parser = argparse.ArgumentParser()
+parser.add_argument("INPUTFILE", help="Path to CSV file")
+parser.add_argument("TABLENAME", help="Name of table to create")
+args = parser.parse_args()
+
+csv_filename = args.INPUTFILE
+table_name = args.TABLENAME
 
 def makealphanum(string):
     return(re.sub(r'\W+', '_', string).lower())
@@ -112,4 +120,4 @@ for fieldname in reader.fieldnames:
 print(command_create_table)
 
 print("COPY %s(%s)" % (table_name, ','.join(fieldnames_safe)))
-print("FROM '%s' DELIMITER ',' CSV HEADER;" % csv_filename)
+print("FROM '%s' DELIMITER ',' CSV HEADER;" % os.path.abspath(csv_filename))
