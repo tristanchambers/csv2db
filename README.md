@@ -1,5 +1,5 @@
 # csv2db
-Automatically convert csv files into a database (written for PostreSQL)
+Automatically convert csv files into a database (written for PostgreSQL)
 
 ## How to use
 example:
@@ -18,4 +18,4 @@ mydatabase=# select * from mytable;
 ```
 
 ## Limitations
-Dates aren't implemented yet. You can output the code to your terminal, cut and paste into a text editor, and edit as desired.
+Dates aren't implemented yet. Workaround: You can output the code to your terminal, cut and paste into a text editor, and edit the schema as needed.
